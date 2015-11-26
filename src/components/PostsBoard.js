@@ -21,11 +21,9 @@ export default class PostsBoard extends BaseComponent {
   _onAddPostClickHandler() {
     const userText = this.userText.getDOMNode().value;
     let data = this.state.data;
-
     if (!userText) {
       return;
     }
-
     data.push({
       author: this.state.author,
       date: '25/11/2015',
@@ -33,11 +31,9 @@ export default class PostsBoard extends BaseComponent {
       comments: 0,
       text: userText
     });
-
     this.setState({
       data: data
     });
-
     this.userText.getDOMNode().value = '';
   }
 

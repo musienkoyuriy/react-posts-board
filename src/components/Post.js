@@ -5,9 +5,7 @@ import CommentList from './CommentList';
 export default class Post extends BaseComponent {
   constructor(props) {
     super(props);
-
     this._bind('_onLikeClickHandler', '_onCommentClickHandler', '_onClickCommentButtonHandler');
-
     this.state = {
       liked: false,
       comments: [],
@@ -58,7 +56,6 @@ export default class Post extends BaseComponent {
   render() {
     const {author, date, text} = this.props.postData;
     let addCommentArea = <div />;
-
     if (this.state.addCommentAreaActive) {
       addCommentArea = <div className="add-comment-area">
                         <input ref={(ref) => this.commentText = ref} placeholder="Your comment" />

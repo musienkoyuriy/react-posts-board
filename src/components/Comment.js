@@ -9,7 +9,6 @@ export default class Comment extends BaseComponent {
 
   render() {
     const {author, date, commentText} = this.props.commentData;
-
     return (
       <div className="post comment">
         <div className="name">{author}</div>
