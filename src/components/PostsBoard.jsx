@@ -49,8 +49,8 @@ export default class PostsBoard extends BaseComponent {
           <input type="text" ref={(ref) => this.userText = ref} className="addpost-input" placeholder="Enter the text..."/>
           <button className="addpost-button" onClick={this._onAddPostClickHandler}>Send</button>
         </div>
-        {this.state.data.map((item) => {
-          return <Post postData={item} />
+        {this.state.data.map((item, i) => {
+          return <Post postData={item} key={i}/>
         }).reverse()}
       </div>
     );

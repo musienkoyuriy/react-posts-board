@@ -9,8 +9,8 @@
 
 .post {
 	width: 97%;
-	height: 80px;
-	margin-top: 13px;
+	margin-top: 20px;
+	margin-bottom: 10px;
 	padding: 5px 15px 5px 5px;
 	border: 1px solid #f6f6f6;
 }
@@ -66,4 +66,20 @@
 
 ::-webkit-input-placeholder {
 	font-style: italic;
+}
+
+.add-comment-area {
+	clear: both;
+	padding: 5px;
+}
+
+.add-comment-area > input {
+	width: 80%;
+}
+.add-comment-area > button {
+	margin-left: 10px;
+}
+
+.comment-list {
+	margin-left: 10px;
 }

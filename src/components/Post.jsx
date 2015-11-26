@@ -6,17 +6,19 @@ export default class Post extends BaseComponent {
   constructor(props) {
     super(props);
 
-    this._bind('_onLikeClickHandler', '_onCommentClickHandler');
+    this._bind('_onLikeClickHandler', '_onCommentClickHandler', '_onClickCommentButtonHandler');
 
     this.state = {
-      liked: false
+      liked: false,
+      comments: [],
+      addCommentAreaActive: false
     };
   }
 
   componentWillMount() {
     this.setState({
       likes: this.props.postData.likes,
-      commments: this.props.postData.comments
+      commments: this.props.postData.comments || []
     });
   }
 
@@ -29,12 +31,40 @@ export default class Post extends BaseComponent {
     });
   }
 
+  _onClickCommentButtonHandler() {
+    let commentText = this.commentText.getDOMNode().value;
+    let comments;
+    if (!commentText) {
+      return;
+    }
+    comments = this.state.comments;
+    comments.push({
+      author: 'Your name',
+      date: '26/11/2015',
+      commentText
+    });
+    this.setState({
+      comments
+    });
+    this.commentText.getDOMNode().value = '';
+  }
+
   _onCommentClickHandler() {
-    alert()
+    this.setState({
+      addCommentAreaActive: true
+    });
   }
 
   render() {
-    const {author, date, text = this.props.postData;
+    const {author, date, text} = this.props.postData;
+    let addCommentArea = <div />;
+
+    if (this.state.addCommentAreaActive) {
+      addCommentArea = <div className="add-comment-area">
+                        <input ref={(ref) => this.commentText = ref} placeholder="Your comment" />
+                        <button onClick={this._onClickCommentButtonHandler}>Comment</button>
+                      </div>
+    }
 
     return (
       <div className="post">
@@ -48,7 +78,8 @@ export default class Post extends BaseComponent {
             <span><a href="#" onClick={this._onLikeClickHandler}>Like</a> {this.state.likes}</span>
           </div>
         </div>
-        <CommentList commments={this.state.commments} />
+        {addCommentArea}
+        <CommentList comments={this.state.comments} />
       </div>
     );
   }

@@ -18227,7 +18227,7 @@
 
 	var _BaseComponentJsx2 = _interopRequireDefault(_BaseComponentJsx);
 
-	var _PostJsx = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./Post.jsx\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _PostJsx = __webpack_require__(159);
 
 	var _PostJsx2 = _interopRequireDefault(_PostJsx);
 
@@ -18301,8 +18301,8 @@
 	            'Send'
 	          )
 	        ),
-	        this.state.data.map(function (item) {
-	          return _react2['default'].createElement(_PostJsx2['default'], { postData: item });
+	        this.state.data.map(function (item, i) {
+	          return _react2['default'].createElement(_PostJsx2['default'], { postData: item, key: i });
 	        }).reverse()
 	      );
 	    }
@@ -18366,6 +18366,334 @@
 	})(_react.Component);
 
 	exports['default'] = BaseComponent;
+	module.exports = exports['default'];
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _BaseComponentJsx = __webpack_require__(158);
+
+	var _BaseComponentJsx2 = _interopRequireDefault(_BaseComponentJsx);
+
+	var _CommentListJsx = __webpack_require__(160);
+
+	var _CommentListJsx2 = _interopRequireDefault(_CommentListJsx);
+
+	var Post = (function (_BaseComponent) {
+	  _inherits(Post, _BaseComponent);
+
+	  function Post(props) {
+	    _classCallCheck(this, Post);
+
+	    _get(Object.getPrototypeOf(Post.prototype), 'constructor', this).call(this, props);
+
+	    this._bind('_onLikeClickHandler', '_onCommentClickHandler', '_onClickCommentButtonHandler');
+
+	    this.state = {
+	      liked: false,
+	      comments: [],
+	      addCommentAreaActive: false
+	    };
+	  }
+
+	  _createClass(Post, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.setState({
+	        likes: this.props.postData.likes,
+	        commments: this.props.postData.comments || []
+	      });
+	    }
+	  }, {
+	    key: '_onLikeClickHandler',
+	    value: function _onLikeClickHandler() {
+	      this.setState({
+	        liked: !this.state.liked
+	      });
+	      this.setState({
+	        likes: this.state.liked ? this.state.likes - 1 : this.state.likes + 1
+	      });
+	    }
+	  }, {
+	    key: '_onClickCommentButtonHandler',
+	    value: function _onClickCommentButtonHandler() {
+	      var commentText = this.commentText.getDOMNode().value;
+	      var comments = undefined;
+	      if (!commentText) {
+	        return;
+	      }
+	      comments = this.state.comments;
+	      comments.push({
+	        author: 'Your name',
+	        date: '26/11/2015',
+	        commentText: commentText
+	      });
+	      this.setState({
+	        comments: comments
+	      });
+	      this.commentText.getDOMNode().value = '';
+	    }
+	  }, {
+	    key: '_onCommentClickHandler',
+	    value: function _onCommentClickHandler() {
+	      this.setState({
+	        addCommentAreaActive: true
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this = this;
+
+	      var _props$postData = this.props.postData;
+	      var author = _props$postData.author;
+	      var date = _props$postData.date;
+	      var text = _props$postData.text;
+
+	      var addCommentArea = _react2['default'].createElement('div', null);
+
+	      if (this.state.addCommentAreaActive) {
+	        addCommentArea = _react2['default'].createElement(
+	          'div',
+	          { className: 'add-comment-area' },
+	          _react2['default'].createElement('input', { ref: function (ref) {
+	              return _this.commentText = ref;
+	            }, placeholder: 'Your comment' }),
+	          _react2['default'].createElement(
+	            'button',
+	            { onClick: this._onClickCommentButtonHandler },
+	            'Comment'
+	          )
+	        );
+	      }
+
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'post' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'name' },
+	          author
+	        ),
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'text' },
+	          text
+	        ),
+	        _react2['default'].createElement(
+	          'div',
+	          null,
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'date' },
+	            _react2['default'].createElement(
+	              'span',
+	              null,
+	              date
+	            ),
+	            ' | ',
+	            _react2['default'].createElement(
+	              'span',
+	              { className: 'comment-link' },
+	              _react2['default'].createElement(
+	                'a',
+	                { href: '#', onClick: this._onCommentClickHandler },
+	                'Comment'
+	              )
+	            )
+	          ),
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'like-container' },
+	            _react2['default'].createElement(
+	              'span',
+	              null,
+	              _react2['default'].createElement(
+	                'a',
+	                { href: '#', onClick: this._onLikeClickHandler },
+	                'Like'
+	              ),
+	              ' ',
+	              this.state.likes
+	            )
+	          )
+	        ),
+	        addCommentArea,
+	        _react2['default'].createElement(_CommentListJsx2['default'], { comments: this.state.comments })
+	      );
+	    }
+	  }]);
+
+	  return Post;
+	})(_BaseComponentJsx2['default']);
+
+	exports['default'] = Post;
+	module.exports = exports['default'];
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _BaseComponentJsx = __webpack_require__(158);
+
+	var _BaseComponentJsx2 = _interopRequireDefault(_BaseComponentJsx);
+
+	var _CommentJsx = __webpack_require__(161);
+
+	var _CommentJsx2 = _interopRequireDefault(_CommentJsx);
+
+	var CommentList = (function (_BaseComponent) {
+	  _inherits(CommentList, _BaseComponent);
+
+	  function CommentList(props) {
+	    _classCallCheck(this, CommentList);
+
+	    _get(Object.getPrototypeOf(CommentList.prototype), 'constructor', this).call(this, props);
+	  }
+
+	  _createClass(CommentList, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'comment-list' },
+	        this.props.comments.map(function (comment, i) {
+	          return _react2['default'].createElement(_CommentJsx2['default'], { commentData: comment, key: i });
+	        })
+	      );
+	    }
+	  }]);
+
+	  return CommentList;
+	})(_BaseComponentJsx2['default']);
+
+	exports['default'] = CommentList;
+	module.exports = exports['default'];
+
+/***/ },
+/* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _BaseComponentJsx = __webpack_require__(158);
+
+	var _BaseComponentJsx2 = _interopRequireDefault(_BaseComponentJsx);
+
+	var _PostJsx = __webpack_require__(159);
+
+	var _PostJsx2 = _interopRequireDefault(_PostJsx);
+
+	var Comment = (function (_BaseComponent) {
+	  _inherits(Comment, _BaseComponent);
+
+	  function Comment(props) {
+	    _classCallCheck(this, Comment);
+
+	    _get(Object.getPrototypeOf(Comment.prototype), 'constructor', this).call(this, props);
+	  }
+
+	  _createClass(Comment, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props$commentData = this.props.commentData;
+	      var author = _props$commentData.author;
+	      var date = _props$commentData.date;
+	      var commentText = _props$commentData.commentText;
+
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'post comment' },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'name' },
+	          author
+	        ),
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'text' },
+	          commentText
+	        ),
+	        _react2['default'].createElement(
+	          'div',
+	          null,
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'date' },
+	            _react2['default'].createElement(
+	              'span',
+	              null,
+	              date
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Comment;
+	})(_BaseComponentJsx2['default']);
+
+	exports['default'] = Comment;
 	module.exports = exports['default'];
 
 /***/ }
