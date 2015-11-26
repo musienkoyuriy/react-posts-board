@@ -1,9 +1,21 @@
+var webpack = require('webpack');
+var path = require('path');
+
 module.exports = {
-  entry: './src/containers/app.jsx',
+  entry: [
+    'webpack-hot-middleware/client',
+    './src/containers/app.jsx'
+  ],
   output: {
-    path: './dist',
-    filename: 'bundle.js'
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/public/'
   },
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
   module: {
     loaders: [
       {
