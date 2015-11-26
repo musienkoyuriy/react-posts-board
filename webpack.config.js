@@ -3,7 +3,7 @@ var path = require('path');
 
 module.exports = {
   entry: [
-    'webpack/hot/signal',
+    'webpack/hot/dev-server',
     './index'
   ],
   output: {
