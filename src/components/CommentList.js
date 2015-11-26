@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import BaseComponent from './BaseComponent.jsx';
-import Comment from './Comment.jsx';
+import BaseComponent from './BaseComponent';
+import Comment from './Comment';
 
 export default class CommentList extends BaseComponent {
   constructor(props) {

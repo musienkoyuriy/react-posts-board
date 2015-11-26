@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import BaseComponent from './BaseComponent.jsx';
-import Post from './Post.jsx';
+import BaseComponent from './BaseComponent';
+import Post from './Post';
 
 export default class PostsBoard extends BaseComponent {
   constructor(props) {

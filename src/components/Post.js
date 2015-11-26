@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import BaseComponent from './BaseComponent.jsx';
-import CommentList from './CommentList.jsx';
+import BaseComponent from './BaseComponent';
+import CommentList from './CommentList';
 
 export default class Post extends BaseComponent {
   constructor(props) {

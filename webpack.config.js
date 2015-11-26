@@ -3,8 +3,8 @@ var path = require('path');
 
 module.exports = {
   entry: [
-    'webpack-hot-middleware/client',
-    './src/containers/app.jsx'
+    'webpack/hot/signal',
+    './index'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -18,11 +18,6 @@ module.exports = {
   ],
   module: {
     loaders: [
-      {
-        test: /\.jsx$/,
-        loader: 'jsx-loader',
-        exclude: '/node_modules/'
-      },
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
