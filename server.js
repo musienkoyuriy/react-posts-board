@@ -1,5 +1,4 @@
 var webpack = require('webpack');
-var path = require('path');
 var express = require('express');
 var webpackDevMiddleware = require('webpack-dev-middleware');
 var webpackHotMiddleware = require('webpack-hot-middleware');
