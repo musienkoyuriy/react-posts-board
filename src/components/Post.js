@@ -30,7 +30,7 @@ export default class Post extends BaseComponent {
   }
 
   _onClickCommentButtonHandler() {
-    let commentText = this.commentText.getDOMNode().value;
+    let commentText = this.commentText.value;
     let comments;
     if (!commentText) {
       return;
@@ -44,7 +44,7 @@ export default class Post extends BaseComponent {
     this.setState({
       comments
     });
-    this.commentText.getDOMNode().value = '';
+    this.commentText.value = '';
   }
 
   _onCommentClickHandler() {

@@ -19,7 +19,7 @@ export default class PostsBoard extends BaseComponent {
   }
 
   _onAddPostClickHandler() {
-    const userText = this.userText.getDOMNode().value;
+    const userText = this.userText.value;
     let data = this.state.data;
     if (!userText) {
       return;
@@ -34,7 +34,7 @@ export default class PostsBoard extends BaseComponent {
     this.setState({
       data: data
     });
-    this.userText.getDOMNode().value = '';
+    this.userText.value = '';
   }
 
   render() {

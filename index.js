@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import App from './src/containers/App';
 
-React.render(<App />, document.getElementById('board-wrap')); 
+ReactDOM.render(<App />, document.getElementById('board-wrap')); 

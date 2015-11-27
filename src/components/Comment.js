@@ -2,13 +2,8 @@ import React, {Component} from 'react';
 import BaseComponent from './BaseComponent';
 import Post from './Post';
 
-export default class Comment extends BaseComponent {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const {author, date, commentText} = this.props.commentData;
+export default (props) => {
+  const {author, date, commentText} = props.commentData;
     return (
       <div className="post comment">
         <div className="name">{author}</div>
@@ -20,5 +15,4 @@ export default class Comment extends BaseComponent {
         </div>
       </div>
     );
-  }
-} 
+}
