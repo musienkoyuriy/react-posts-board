@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import BaseComponent from './BaseComponent';
-import CommentList from './CommentList';
+import BaseComponent from '../BaseComponent';
+import CommentList from '../CommentList/CommentList';
+import CSSModules from 'react-css-modules';
+import styles from './post.css';
 
-export default class Post extends BaseComponent {
+class Post extends BaseComponent {
   constructor(props) {
     super(props);
     this._bind('_onLikeClickHandler', '_onCommentClickHandler', '_onClickCommentButtonHandler');
@@ -58,20 +60,20 @@ export default class Post extends BaseComponent {
     let addCommentArea = <div />;
     if (this.state.addCommentAreaActive) {
       addCommentArea = <div className="add-comment-area">
-                        <input ref={(ref) => this.commentText = ref} placeholder="Your comment" />
-                        <button onClick={this._onClickCommentButtonHandler}>Comment</button>
-                      </div>
+                         <textarea ref={(ref) => this.commentText = ref} className="form-control" rows="2" placeholder="Your comment"></textarea>
+                         <button className="btn btn-primary" onClick={this._onClickCommentButtonHandler}>Comment</button>
+                       </div>
     }
 
     return (
-      <div className="post">
-        <div className="name">{author}</div>
+      <div className="post container">
+        <div>{author}</div>
         <div className="text">{text}</div>
-        <div>
-          <div className="date">
-            <span>{date}</span> | <span className="comment-link"><a href="#" onClick={this._onCommentClickHandler}>Comment</a></span>
+        <div className="row">
+          <div className="col-xs-11">
+            <span>{date}</span> | <a href="#" onClick={this._onCommentClickHandler}>Comment</a>
           </div>
-          <div className="like-container">
+          <div className="col-xs-1">
             <span><a href="#" onClick={this._onLikeClickHandler}>Like</a> {this.state.likes}</span>
           </div>
         </div>
@@ -81,3 +83,5 @@ export default class Post extends BaseComponent {
     );
   }
 }
+
+export default CSSModules(Post, styles);

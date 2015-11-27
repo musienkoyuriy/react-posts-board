@@ -1,0 +1,32 @@
+:global .post {
+  width: 97%;
+  margin-top: 20px;
+  padding: 5px 15px 5px 5px;
+}
+
+:global .post:not(:last-child) {
+  border-bottom: 1px solid #999;
+}
+
+:global .post a {
+  color: #829BAF;
+  text-decoration: none;
+}
+
+:global .post a:hover {
+  color: #2F5879;
+}
+
+:global .post > div:not(:first-child) {
+  margin-top: 10px;
+}
+
+:global .post .text {
+  font-style: italic;
+  font-weight: bold;
+}
+
+
+:global .post .add-comment-area .btn{
+	margin-top: 10px;
+}

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PostsBoard from '../components/PostsBoard';
+import PostsBoard from '../components/PostsBoard/PostsBoard';
 
 var boardData = [
   {author: 'John', date: '01/10/2015', text: 'Some  post', likes: 53, comments: []},

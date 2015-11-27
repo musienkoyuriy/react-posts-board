@@ -1,0 +1,24 @@
+.posts-board {
+  width: 1000px;
+  margin: 0 auto;
+  border: 1px solid #c6c6c6;
+  padding: 10px;
+}
+.posts-board ::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 30px;
+  margin-left: 32%;
+}
+
+.add-post-btn {
+  margin-top: 10px;
+}
+
+.posts-board .addpost-container {
+  width: 97%;
+  margin: 0 auto;
+}
