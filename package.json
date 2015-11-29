@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": ["react", "webpack", "posts", "board", "react-css-modules"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/musienkoyuriy/react-posts-board.git"
