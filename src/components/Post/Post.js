@@ -66,6 +66,7 @@ class Post extends BaseComponent {
 
   render() {
     const {author, date, text} = this.props.postData;
+    const { comments } = this.state;
     return (
       <div className="post container">
         <div>{author}</div>
@@ -79,7 +80,7 @@ class Post extends BaseComponent {
           </div>
         </div>
         {this.state.addCommentAreaActive ? this._getAddCommentArea() : <div></div>}
-        <CommentList comments={this.state.comments} />
+        <CommentList comments={ comments } />
       </div>
     );
   }

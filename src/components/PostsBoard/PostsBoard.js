@@ -15,27 +15,24 @@ class PostsBoard extends BaseComponent {
   }
 
   componentWillMount() {
-    this.setState({
-      data: this.props.data
-    });
+    const boardData = this.props.boardData
+    this.setState({ boardData });
   }
 
   _onAddPostClickHandler() {
     const userText = this.userText.value;
-    let data = this.state.data;
+    let { boardData } = this.state;
     if (!userText) {
       return;
     }
-    data.push({
+    boardData.push({
       author: this.state.author,
       date: '25/11/2015',
       likes: 0,
       comments: 0,
       text: userText
     });
-    this.setState({
-      data: data
-    });
+    this.setState({ boardData });
     this.userText.value = '';
   }
 
@@ -47,12 +44,19 @@ class PostsBoard extends BaseComponent {
           <input type="text" ref={(ref) => this.userText = ref} className="addpost-input form-control" placeholder="Enter the text..."/>
           <button styleName="add-post-btn" className="btn btn-primary" onClick={this._onAddPostClickHandler}>Send post</button>
         </div>
-        {this.state.data.map((item, i) => {
+        {this.state.boardData.map((item, i) => {
           return <Post postData={item} key={i}/>
         }).reverse()}
       </div>
     );
   }
 }
+PostsBoard.propTypes = {
+  boardData: React.PropTypes.arrayOf(React.PropTypes.shape({
+    author: React.PropTypes.string.isRequired,
+    date: React.PropTypes.string.isRequired,
+    text: React.PropTypes.string.isRequired
+  })).isRequired
+};
 
 export default CSSModules(PostsBoard, styles);

@@ -13,5 +13,12 @@ let CommentList = (props) => {
       </div>
     );
 }
+CommentList.propTypes = {
+	comments: React.PropTypes.arrayOf(React.PropTypes.shape({
+		author: React.PropTypes.string.isRequired,
+		date: React.PropTypes.string.isRequired,
+		commentText: React.PropTypes.string.isRequired
+	})).isRequired
+};
 
 export default CSSModules(CommentList, styles);

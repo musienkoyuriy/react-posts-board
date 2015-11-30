@@ -19,7 +19,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="app">
-        <PostsBoard data={this.state.boardData} />
+        <PostsBoard boardData={this.state.boardData} />
       </div>
     )
   }
