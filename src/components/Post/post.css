@@ -26,6 +26,9 @@
   font-weight: bold;
 }
 
+:global .post .add-comment-area textarea {
+  resize: none;
+}
 
 :global .post .add-comment-area .btn{
 	margin-top: 10px;

@@ -7,7 +7,7 @@ import styles from './post.css';
 class Post extends BaseComponent {
   constructor(props) {
     super(props);
-    this._bind('_onLikeClickHandler', '_onCommentClickHandler', '_onClickCommentButtonHandler');
+    this._bind('_onLikeClickHandler', '_onCommentClickHandler', '_onClickCommentButtonHandler' ,'_getAddCommentArea');
     this.state = {
       liked: false,
       comments: [],
