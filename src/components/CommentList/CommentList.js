@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PropTypes, Component} from 'react';
 import BaseComponent from '../BaseComponent';
 import Comment from '../Comment/Comment';
 import CSSModules from 'react-css-modules';
@@ -14,10 +14,10 @@ let CommentList = (props) => {
     );
 }
 CommentList.propTypes = {
-	comments: React.PropTypes.arrayOf(React.PropTypes.shape({
-		author: React.PropTypes.string.isRequired,
-		date: React.PropTypes.string.isRequired,
-		commentText: React.PropTypes.string.isRequired
+	comments: PropTypes.arrayOf(PropTypes.shape({
+		author: PropTypes.string.isRequired,
+		date: PropTypes.string.isRequired,
+		commentText: PropTypes.string.isRequired
 	})).isRequired
 };
 

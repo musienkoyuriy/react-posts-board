@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PropTypes, Component} from 'react';
 import BaseComponent from '../BaseComponent';
 import Post from '../Post/Post';
 import CSSModules from 'react-css-modules';
@@ -52,10 +52,10 @@ class PostsBoard extends BaseComponent {
   }
 }
 PostsBoard.propTypes = {
-  boardData: React.PropTypes.arrayOf(React.PropTypes.shape({
-    author: React.PropTypes.string.isRequired,
-    date: React.PropTypes.string.isRequired,
-    text: React.PropTypes.string.isRequired
+  boardData: PropTypes.arrayOf(PropTypes.shape({
+    author: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
   })).isRequired
 };
 
