@@ -6,7 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["react", "webpack", "posts", "board", "react-css-modules"],
+  "keywords": [
+    "react",
+    "webpack",
+    "posts",
+    "board",
+    "react-css-modules"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/musienkoyuriy/react-posts-board.git"
@@ -26,6 +32,8 @@
     "react": "^0.14.0",
     "react-css-modules": "^3.6.1",
     "react-dom": "^0.14.0",
+    "react-redux": "^4.0.0",
+    "redux": "^3.0.4",
     "style-loader": "^0.13.0",
     "webpack": "^1.9.11",
     "webpack-dev-middleware": "^1.2.0",

@@ -1,26 +1,35 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes } from 'react';
 import PostsBoard from '../components/PostsBoard/PostsBoard';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as PostActions from '../actions/index';
 
-var boardData = [
-  {author: 'John', date: '01/10/2015', text: 'Some  post', likes: 53, comments: []},
-  {author: 'Stive', date: '01/10/2015', text: 'Some another post', likes: 25, comments: []},
-  {author: 'Joy', date: '01/10/2015', text: 'Some important post', likes: 64, comments: []},
-  {author: 'Jim', date: '01/10/2015', text: 'Some important post again', likes: 15, comments: []},
-  {author: 'Yuriy', date: '01/10/2015', text: 'So important post', likes: 5, comments: []}
-];
-
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      boardData
-    }
-  } 
+class App extends Component {
   render() {
+    const { posts, actions } = this.props;
     return (
-      <div className="app">
-        <PostsBoard boardData={this.state.boardData} />
+      <div>
+        <PostsBoard posts={posts} actions={actions}/>
       </div>
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    posts: state.posts
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(PostActions, dispatch)
+  }
+}
+
+App.propTypes = {
+  posts: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App); 

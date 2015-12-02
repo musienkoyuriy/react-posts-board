@@ -4,7 +4,7 @@ import Comment from '../Comment/Comment';
 import CSSModules from 'react-css-modules';
 import styles from './commentlist.css';
 
-let CommentList = (props) => {
+let CommentList = (props, context) => {
   return (
       <div styleName="comment-list">
         {props.comments.map((comment, i) => {
