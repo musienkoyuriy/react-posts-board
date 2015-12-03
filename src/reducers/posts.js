@@ -28,10 +28,10 @@ export default function posts(state = initialState, action) {
 
   case LIKE_UNLIKE_POST:
     return state.map((post) => {
-      let { liked, likes } = post;
+      let { liked, likes } = post;  
       likes = liked ? likes - 1 : likes + 1;
       return post.id === action.id ?
-             Object.assign({}, post, { liked: !liked, likes }) :
+             {...post, liked: !liked, likes } :
              post
     });
 
@@ -39,7 +39,8 @@ export default function posts(state = initialState, action) {
     return state.map((post) => {
       const { comments } = post;
       return post.id === action.id ?
-             Object.assign({}, post, {
+             {
+               ...post,
                comments: [
                  ...comments,
                  {
@@ -48,7 +49,7 @@ export default function posts(state = initialState, action) {
                    commentText: action.commentText
                  }
                ]
-             }) :
+             } :
              post
     });
     default:
