@@ -8,19 +8,14 @@ class PostsBoard extends BaseComponent {
   constructor(props, context) {
     super(props, context);
     this._bind('_onAddPostClickHandler');
-    this.state = {
-      data: [],
-      author: 'Your name'
-    };
   }
 
   _onAddPostClickHandler() {
     const userText = this.userText.value;
-    let { posts } = this.state;
-    const { addPost } = this.props.actions;
     if (!userText) {
       return;
     }
+    const { addPost } = this.props.actions;
     addPost(userText);
     this.userText.value = '';
   }
@@ -31,7 +26,7 @@ class PostsBoard extends BaseComponent {
       <div styleName="posts-board" className="container">
         <div styleName="title">React.JS posts board</div>
         <div styleName="addpost-container">
-          <input type="text" ref={ (ref) => this.userText = ref } className="addpost-input form-control" placeholder="Enter the text..."/>
+          <input type="text" ref={ (ref) => this.userText = ref } className="addpost-input form-control" placeholder="Enter the text..." />
           <button styleName="add-post-btn" className="btn btn-primary" onClick={this._onAddPostClickHandler}>Send post</button>
         </div>
         {this.props.posts.map((item, i) => {
