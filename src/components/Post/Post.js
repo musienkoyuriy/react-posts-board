@@ -1,13 +1,12 @@
 import React, {Component} from 'react'
-import BaseComponent from '../BaseComponent'
 import CommentList from '../CommentList/CommentList'
 import CSSModules from 'react-css-modules'
 import styles from './post.css'
 
-class Post extends BaseComponent {
+@CSSModules(styles)
+class Post extends Component {
   constructor(props, context) {
     super(props, context)
-    this._bind('_onLikeClickHandler', '_onCommentClickHandler', '_onClickCommentButtonHandler' ,'_getAddCommentArea')
     this.state = {
       liked: false,
       comments: [],
@@ -43,7 +42,7 @@ class Post extends BaseComponent {
     return (
       <div className="add-comment-area">
         <textarea ref={ (ref) => this.commentText = ref } className="form-control" rows="2" placeholder="Your comment"></textarea>
-        <button className="btn btn-primary" onClick={ this._onClickCommentButtonHandler }>Comment</button>
+        <button className="btn btn-primary" onClick={ ::this._onClickCommentButtonHandler }>Comment</button>
       </div>
     )
   }
@@ -56,17 +55,17 @@ class Post extends BaseComponent {
         <div className="text">{text}</div>
         <div className="row">
           <div className="col-xs-11">
-            <span>{ date }</span> | <a href="#" onClick={ this._onCommentClickHandler }>Comment</a>
+            <span>{ date }</span> | <a href="#" onClick={ ::this._onCommentClickHandler }>Comment</a>
           </div>
           <div className="col-xs-1">
-            <span><a href="#" onClick={ this._onLikeClickHandler }>Like</a> { likes }</span>
+            <span><a href="#" onClick={ ::this._onLikeClickHandler }>Like</a> { likes }</span>
           </div>
         </div>
-        { this.state.addCommentAreaActive ? this._getAddCommentArea() : <div></div> }
+        { this.state.addCommentAreaActive && ::this._getAddCommentArea() }
         <CommentList comments={ comments } />
       </div>
     )
   }
 }
 
-export default CSSModules(Post, styles)
+export default Post

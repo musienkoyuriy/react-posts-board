@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './src/containers/App';
+import App from './containers/App';
 import { Provider } from 'react-redux';
-import configureStore from './src/store/configureStore';
+import configureStore from './store/configureStore';
 
 const store = configureStore();
 
@@ -11,4 +11,4 @@ render(
     <App />
   </Provider>,
   document.getElementById('board-wrap')
-); 
+);

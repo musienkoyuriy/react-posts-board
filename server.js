@@ -1,24 +1,25 @@
-var webpack = require('webpack');
-var express = require('express');
-var webpackDevMiddleware = require('webpack-dev-middleware');
-var webpackHotMiddleware = require('webpack-hot-middleware');
-var appConfig = require('./config');
-var webpackConfig = require('./webpack.config');
+var webpack = require('webpack')
+var express = require('express')
+var webpackDevMiddleware = require('webpack-dev-middleware')
+var webpackHotMiddleware = require('webpack-hot-middleware')
+var appConfig = require('./config')
+var webpackConfig = require('./webpack.config')
+var path = require('path')
 
-var compiler = webpack(webpackConfig);
-var port = appConfig.get('port');
+var compiler = webpack(webpackConfig)
+var port = appConfig.get('port')
 
-var app = express();
-app.use('/public', express.static('public'));
-app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }));
-app.use(webpackHotMiddleware(compiler));
+var app = express()
+app.use('/public', express.static('public'))
+app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }))
+app.use(webpackHotMiddleware(compiler))
 
-app.get('/', (req, res) => res.sendFile(__dirname + '/index.html'));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/index.html')))
 
 app.listen(
     port,
     (error) => {
-        if (error) throw err;
-        console.info(`Listening in port ${port}, Open up http://localhost:${port}`);
+        if (error) throw err
+        console.info(`Listening in port ${port}, Open up http://localhost:${port}`)
     }
-);
+)

@@ -1,16 +1,18 @@
-var webpack = require('webpack');
-var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var NODE_ENV  = process.env.NODE_ENV;
+require('babel-polyfill')
+require("babel-core/register")
+
+var webpack = require('webpack')
+var path = require('path')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 function isDevelopment() {
-    return NODE_ENV === 'development';
+    return process.env.NODE_ENV === 'development'
 }
 
 module.exports = {
   entry: [
     'webpack/hot/dev-server',
-    './index'
+    './src/index'
   ],
   watch: isDevelopment(),
   output: {
@@ -30,8 +32,12 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
-        exclude: '/node_modules/'
+        loader: 'babel',
+        query: {
+          cacheDirectory: true,
+          presets: ['es2015', 'stage-0', 'react'],
+          plugins: ['transform-decorators-legacy']
+        }
       },
       {
         test: /\.css$/,
@@ -42,9 +48,9 @@ module.exports = {
 }
 
 // for production case
-if (isDevelopment()) {
+if (!isDevelopment()) {
     module.exports.plugins.push(
-        new webpack.UglifyJsPlugin({
+        new webpack.optimize.UglifyJsPlugin({
             drop_console: true
         })
     );
