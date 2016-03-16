@@ -4,7 +4,7 @@ import Post from '../Post/Post';
 import CSSModules from 'react-css-modules';
 import styles from './comment.css';
 
-let Comment = (props, context) => {
+const Comment = (props) => {
   const { author, date, commentText } = props.commentData;
     return (
       <div className="post" styleName="comment">

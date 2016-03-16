@@ -39,5 +39,8 @@
     "webpack": "^1.9.11",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.2.0"
+  },
+  "dependencies": {
+    "nconf": "^0.8.4"
   }
 }

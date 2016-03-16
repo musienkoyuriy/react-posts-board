@@ -1,12 +1,12 @@
-import React, {Component, PropTypes } from 'react';
-import PostsBoard from '../components/PostsBoard/PostsBoard';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as PostActions from '../actions/index';
+import React, {Component, PropTypes } from 'react'
+import PostsBoard from '../components/PostsBoard/PostsBoard'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as PostActions from '../actions/index'
 
 class App extends Component {
   render() {
-    const { posts, actions } = this.props;
+    const { posts, actions } = this.props
     return (
       <div>
         <PostsBoard posts={posts} actions={actions}/>
@@ -18,7 +18,7 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     posts: state.posts
-  };
+  }
 }
 
 function mapDispatchToProps(dispatch) {
@@ -32,4 +32,4 @@ App.propTypes = {
   actions: PropTypes.object.isRequired
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App); 
+export default connect(mapStateToProps, mapDispatchToProps)(App)

@@ -1,27 +1,27 @@
-import React, { PropTypes, Component } from 'react';
-import BaseComponent from '../BaseComponent';
-import Post from '../Post/Post';
-import CSSModules from 'react-css-modules';
-import styles from './posts-board.css';
+import React, { PropTypes, Component } from 'react'
+import BaseComponent from '../BaseComponent'
+import Post from '../Post/Post'
+import CSSModules from 'react-css-modules'
+import styles from './posts-board.css'
 
 class PostsBoard extends BaseComponent {
   constructor(props, context) {
-    super(props, context);
-    this._bind('_onAddPostClickHandler');
+    super(props, context)
+    this._bind('_onAddPostClickHandler')
   }
 
   _onAddPostClickHandler() {
-    const userText = this.userText.value;
+    const userText = this.userText.value
     if (!userText) {
-      return;
+      return
     }
-    const { addPost } = this.props.actions;
-    addPost(userText);
-    this.userText.value = '';
+    const { addPost } = this.props.actions
+    addPost(userText)
+    this.userText.value = ''
   }
 
   render() {
-    const { actions } = this.props;
+    const { actions } = this.props
     return (
       <div styleName="posts-board" className="container">
         <div styleName="title">React.JS posts board</div>
@@ -33,7 +33,7 @@ class PostsBoard extends BaseComponent {
           return <Post postData={item} key={i} { ...actions }/>
         }).reverse()}
       </div>
-    );
+    )
   }
 }
 PostsBoard.propTypes = {
@@ -42,6 +42,6 @@ PostsBoard.propTypes = {
     date: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired
   })).isRequired
-};
+}
 
-export default CSSModules(PostsBoard, styles);
+export default CSSModules(PostsBoard, styles)

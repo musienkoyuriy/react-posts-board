@@ -1,12 +1,18 @@
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var NODE_ENV  = process.env.NODE_ENV;
+
+function isDevelopment() {
+    return NODE_ENV === 'development';
+}
 
 module.exports = {
   entry: [
     'webpack/hot/dev-server',
     './index'
   ],
+  watch: isDevelopment(),
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -33,4 +39,13 @@ module.exports = {
       }
     ]
   }
+}
+
+// for production case
+if (isDevelopment()) {
+    module.exports.plugins.push(
+        new webpack.UglifyJsPlugin({
+            drop_console: true
+        })
+    );
 }
