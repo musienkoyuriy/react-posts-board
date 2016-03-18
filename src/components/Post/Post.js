@@ -48,7 +48,7 @@ class Post extends Component {
   }
 
   render() {
-    const { author, date, text, comments, likes} = this.props.postData
+    const { author, date, text, comments, likes } = this.props.postData
     return (
       <div className="post container">
         <div>{ author }</div>
